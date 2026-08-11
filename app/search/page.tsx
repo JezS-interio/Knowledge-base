@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Search } from "lucide-react"
 import { useStore } from "@/components/store-provider"
@@ -8,7 +9,7 @@ import { ProblemCard } from "@/components/problem-card"
 import { TagBadge } from "@/components/tag-badge"
 import { Breadcrumbs } from "@/components/breadcrumb"
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { search, tagCounts } = useStore()
@@ -90,5 +91,13 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={null}>
+      <SearchPageContent />
+    </Suspense>
   )
 }

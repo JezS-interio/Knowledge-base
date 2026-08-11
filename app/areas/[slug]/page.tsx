@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Suspense } from "react"
 import Link from "next/link"
 import { useParams, useSearchParams, useRouter } from "next/navigation"
 import { Plus, X, FileQuestion } from "lucide-react"
@@ -19,7 +20,7 @@ import {
 
 type SortKey = "updated" | "created" | "alpha"
 
-export default function AreaPage() {
+function AreaPageContent() {
   const { slug } = useParams<{ slug: string }>()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -155,5 +156,13 @@ export default function AreaPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function AreaPage() {
+  return (
+    <Suspense fallback={null}>
+      <AreaPageContent />
+    </Suspense>
   )
 }

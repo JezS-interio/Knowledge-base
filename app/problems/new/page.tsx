@@ -1,12 +1,13 @@
 "use client"
 
+import { Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { useStore } from "@/components/store-provider"
 import { ProblemForm } from "@/components/problem-form"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { AccessDenied } from "@/components/access-denied"
 
-export default function NewProblemPage() {
+function NewProblemContent() {
   const { canEdit } = useStore()
   const searchParams = useSearchParams()
   const area = searchParams.get("area") ?? undefined
@@ -33,5 +34,13 @@ export default function NewProblemPage() {
       </header>
       <ProblemForm defaultAreaSlug={area} />
     </div>
+  )
+}
+
+export default function NewProblemPage() {
+  return (
+    <Suspense fallback={null}>
+      <NewProblemContent />
+    </Suspense>
   )
 }
