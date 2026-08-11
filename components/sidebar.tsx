@@ -1,13 +1,13 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   Home,
   Clock,
   Star,
   Shield,
-  BookOpen,
   ChevronRight,
   Users,
 } from "lucide-react"
@@ -63,8 +63,13 @@ export function Sidebar({
       )}
     >
       <div className="flex h-14 items-center gap-2.5 border-b border-sidebar-border px-5">
-        <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-          <BookOpen className="size-4" />
+        <div className="relative flex size-7 shrink-0 items-center justify-center overflow-hidden rounded-md">
+          <Image
+            src="/s-interio-logo.webp"
+            alt="S-interio"
+            fill
+            className="object-contain"
+          />
         </div>
         <span className="text-[0.95rem] font-semibold tracking-tight text-sidebar-foreground">
           S-interio
