@@ -62,18 +62,16 @@ export function Sidebar({
         className,
       )}
     >
-      <div className="flex h-14 items-center gap-2.5 border-b border-sidebar-border px-5">
-        <div className="relative flex size-7 shrink-0 items-center justify-center overflow-hidden rounded-md">
+      <div className="flex h-16 items-center gap-2.5 border-b border-sidebar-border px-5">
+        <div className="relative h-11 w-full shrink-0">
           <Image
             src="/s-interio-logo.webp"
             alt="S-interio"
             fill
-            className="object-contain"
+            className="object-contain object-left"
+            priority
           />
         </div>
-        <span className="text-[0.95rem] font-semibold tracking-tight text-sidebar-foreground">
-          S-interio
-        </span>
         <span className="ml-auto rounded-md bg-sidebar-accent px-1.5 py-0.5 text-[10px] font-medium text-sidebar-accent-foreground">
           KB
         </span>
